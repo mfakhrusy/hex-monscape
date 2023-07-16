@@ -2,6 +2,7 @@
 import { ref } from "vue"
 import { useRouter } from "vue-router"
 import { useStore } from "../../store"
+import NonBattleScreenLayout from "../../components/NonBattleScreenLayout.vue"
 
 export default {
     setup() {
@@ -27,29 +28,28 @@ export default {
             playerName,
             choosePartner
         }
-    }
+    },
+    components: { NonBattleScreenLayout }
 }
 </script>
 
 <template>
-    <div id="welcome-screen-wrapper" class="flex relative w-app h-app bg-cover">
-        <div class="p-[160px]">
-            <!-- Game title -->
-            <h1 class="game-title">NEW GAME</h1>
+    <NonBattleScreenLayout>
+        <!-- Game title -->
+        <h1 class="game-title">NEW GAME</h1>
 
-            <!-- Initial actions -->
-            <div class="game-initial-actions">
-                <label class="flex flex-col text-2xl" for="input_player-name">
-                    <span class="mb-2">Who are you?</span>
-                    <input v-model="playerName" type="text" id="input_player-name" />
-                </label>
-                <button
-                    @click="choosePartner"
-                    class="bg-[rgba(0,0,0,.2)] rounded-lg text-2xl py-2 px-4"
-                >Choose your partner</button>
-            </div>
+        <!-- Initial actions -->
+        <div class="game-initial-actions">
+            <label class="flex flex-col text-2xl" for="input_player-name">
+                <span class="mb-2">Who are you?</span>
+                <input v-model="playerName" type="text" id="input_player-name" />
+            </label>
+            <button
+                @click="choosePartner"
+                class="bg-[rgba(0,0,0,.2)] rounded-lg text-2xl py-2 px-4"
+            >Choose your partner</button>
         </div>
-    </div>
+    </NonBattleScreenLayout>
 </template>
 
 <style scoped>
