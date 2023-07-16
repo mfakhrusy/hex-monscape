@@ -21,7 +21,7 @@ export default {
             HEX
             <br />MONSCAPE
         </h1>
-        <div class="flex flex-col gap-y-2 mt-2 pr-96 text-lg">
+        <div class="flex flex-col gap-y-2 mt-2 lg:pr-96 text-lg">
             <p>
                 This is a simple web game implemented using Hexagonal Architecture. It is intended to become Solutions Team reference when they want to implement web app using Hexagonal Architecture. You can see more details
                 <a
