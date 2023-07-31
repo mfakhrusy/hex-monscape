@@ -2,6 +2,7 @@
 import { ref } from "vue"
 import { useRouter } from "vue-router"
 import { useStore } from "../../store"
+import NonBattleScreenLayout from "../../components/NonBattleScreenLayout.vue"
 
 export default {
     setup() {
@@ -27,13 +28,14 @@ export default {
             playerName,
             choosePartner
         }
-    }
+    },
+    components: { NonBattleScreenLayout }
 }
 </script>
 
 <template>
-    <div id="welcome-screen-wrapper" class="flex relative w-app h-app bg-cover">
-        <div class="p-[160px]">
+    <NonBattleScreenLayout>
+        <div class="max-w-[400px]">
             <!-- Game title -->
             <h1 class="game-title">NEW GAME</h1>
 
@@ -49,7 +51,7 @@ export default {
                 >Choose your partner</button>
             </div>
         </div>
-    </div>
+    </NonBattleScreenLayout>
 </template>
 
 <style scoped>

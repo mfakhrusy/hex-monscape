@@ -7,12 +7,14 @@ import { getAvailablePartners } from "../../entity/partner"
 import PartnerList from "./components/PartnerList.vue"
 import PartnerCard from "../../components/PartnerCard.vue"
 import MonscapeHTTP from "../../composables/http_client"
+import NonBattleScreenLayout from "../../components/NonBattleScreenLayout.vue"
 
 export default {
     components: {
-        PartnerList,
-        PartnerCard
-    },
+    PartnerList,
+    PartnerCard,
+    NonBattleScreenLayout
+},
     setup() {
         const router = useRouter()
         const store = useStore()
@@ -45,27 +47,29 @@ export default {
 </script>
 
 <template>
-    <div v-if="availablePartners.length > 0" class="flex justify-between w-full h-app p-[160px]">
-        <div class="left-side">
-            <!-- Game title -->
-            <h1 class="game-title">NEW GAME</h1>
-            <p class="game-description mt-3 text-2xl">
-                Choose your partner,
-                <span class="player-name">{{ playerName }}</span>
-            </p>
+    <NonBattleScreenLayout>
+        <div v-if="availablePartners.length > 0" class="flex justify-between w-full h-app">
+            <div class="left-side">
+                <!-- Game title -->
+                <h1 class="game-title">NEW GAME</h1>
+                <p class="game-description mt-3 text-2xl">
+                    Choose your partner,
+                    <span class="player-name">{{ playerName }}</span>
+                </p>
 
-            <PartnerList :availablePartners="availablePartners" />
-
-            <!-- Initial actions -->
-            <div class="game-initial-actions">
-                <button
-                    @click="newGame"
-                    class="bg-red-600 text-white rounded-lg w-[300px] text-2xl py-2 px-3"
-                >Proceed</button>
+                <PartnerList :availablePartners="availablePartners" />
+    
+                <!-- Initial actions -->
+                <div class="game-initial-actions">
+                    <button
+                        @click="newGame"
+                        class="bg-red-600 text-white rounded-lg w-[300px] text-2xl py-2 px-3"
+                    >Proceed</button>
+                </div>
+            </div>
+            <div class="right-side">
+                <PartnerCard :partner="chosenPartner" />
             </div>
         </div>
-        <div class="right-side">
-            <PartnerCard :partner="chosenPartner" />
-        </div>
-    </div>
+    </NonBattleScreenLayout>
 </template>

@@ -6,10 +6,12 @@ import { getGameScenario, turnStates } from "../../entity/game"
 import PartnerCard from "../../components/PartnerCard.vue"
 import MonscapeHTTP from "../../composables/http_client"
 
+import NonBattleScreenLayout from "../../components/NonBattleScreenLayout.vue"
 export default {
     components: {
-        PartnerCard
-    },
+    PartnerCard,
+    NonBattleScreenLayout
+},
     setup() {
         // dependencies initialization
         const router = useRouter()
@@ -81,7 +83,7 @@ export default {
 }
 </script>
 <template>
-    <div class="flex justify-between w-full h-app p-[160px]">
+    <NonBattleScreenLayout>
         <div class="left-side pr-24">
             <!-- Texts -->
             <p class="game-description text-3xl">
@@ -111,5 +113,5 @@ export default {
         <div class="right-side">
             <PartnerCard :partner="partner" />
         </div>
-    </div>
+    </NonBattleScreenLayout>
 </template>
